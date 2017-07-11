@@ -1,0 +1,4 @@
+1 show version, time:  select version(), CURRENT_DATE, NOW();
+2 use sql as calculator:  select 2+3;
+3 table mysql shows privilege for the user;
+4 show database which i am working on now:  select database();
