@@ -1,0 +1,5 @@
+spring mvc 工作流程
+1 由dispatcherServlet 接受 请求， 调用handlerMapping来确定调用哪个controller
+2 dispatcherservlet 将请求传递给相应controller，接受controller的返回结果（通常是view name， 即视图的逻辑名）
+3 dispatcherservlet 根据controller返回的逻辑视图名调用 viewResolver的方法来获得真正的view name
+4 调用view模块， 将model的数据组装进view，并返回给客户端
