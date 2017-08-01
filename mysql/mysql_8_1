@@ -1,0 +1,11 @@
+1 create user
+	CREATE USER 'test'@'localhost' IDENTIFIED BY 'password';
+	flush privileges;
+
+2 reset password
+	alter user 'root'@'localhost' identified by 'mypass';  >  initFile
+	mysqld --init-file=initFile
+
+3 grant user privilege to some database/schema
+	GRANT ALL ON schema.* TO 'test'@'localhost';
+	GRANT ALL ON *.* TO 'test'@'localhost';
