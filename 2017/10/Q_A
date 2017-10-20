@@ -1,0 +1,9 @@
+2017/10/19
+	1 spring externalize property
+	2 @mappedSupperClass
+		一般用于父类，该父类会将自身属性反应到子类的存储结构上
+	3 serilizable  used for?
+	  用户序列化一个对象，保存到文件或者通过流发送到某个地方，之后对方可以反序列化出这个对象，是用于传输对象的一种方式
+	4 spring data audit
+	5 spring cache
+		有多种实现，在marketapi中使用的是ehcache3， 具体步骤为 1 引入ehcache， javax cache到pom.xml 2 可以配置ehcache.xml 3 使用@component 来初始化cache  4 通过annotation来使用cache
