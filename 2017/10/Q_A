@@ -7,3 +7,91 @@
 	4 spring data audit
 	5 spring cache
 		有多种实现，在marketapi中使用的是ehcache3， 具体步骤为 1 引入ehcache， javax cache到pom.xml 2 可以配置ehcache.xml 3 使用@component 来初始化cache  4 通过annotation来使用cache
+
+2017/10/25
+	1 isolation level
+		read uncommited (TA reads data when TB isnot finished)  causes dirty read, unrepeatable read, phantom read
+		read commited(TA is reading data after TB is finished) causes unrepeatable read, phatom read (keeps write locks (acquired on selected data) until the end of the transaction, but read lock is released as soon as the select operation is performed)
+		repeatable reads (TA is reading data after or before TB )causes phatom read(it accquired read/write locks on selected data, but no range-locks, so it won't prevent phantom read)
+		serializable  (no concurrency side effects) (it accquired read/write/range locks on selected data to prevent side effects)
+	2 exclusive lock		
+	3 Two-phase locking
+		most common transaction concurrency control method in DBMSs, used to provide both serializability and recoverability for correctness
+
+
+Thread:
+	1 directly control thread creation and management
+	2 abstract thread management from the rest of your application, pass the application's tasks to an executor.
+
+	high level concurrency objects
+	1 Lock objects
+		reentrantLock is one of its implementation:
+		  vs synchronize
+		  	1) lock interruptibly
+		  	2) timeout
+		  	3) fairness
+		  	4) api to get list of waiting thread
+		  	5) try lock without blocking
+	2 Executors
+	3 Concurrent Collections
+	4 Atomic variables
+	5 ThreadLocalRadom		
+
+
+10/26
+	Liveness: a concurrent application's ablity to execute in a timely manner is known as its liveness
+	Liveness problem: deadLock, starvation, livelock
+	deadLock: a situation where two or more threads are blocked forever, waiting for each other
+
+10/27
+	starvation: a thread is unable to gain regular access to shared resources and is unable to make progress. this happens when shared resources are made unavailable for long periods by "greedy" threads.
+	livelock: 
+
+10/28
+	concurrenthashmap
+	concurrentNavigableMap (concurrent version of tree map)
+	BlockingQueue (thread safe)
+
+	nio
+		channel,
+		buffer,  read data from buffer -> int byteRead  = channel.write(buffer)
+				 write data to buffer -> int byteWrite = channel.read(buffer)
+				 clear(): set position and limit to 0, the data will be lost
+				 compact(): move the unread data to the begining and set the position to the length+1, so you can continue to write data, but previous data is not lost
+				 rewind(): set position to 0, keep the limit, so you can reread the data
+				 mark(): set a mark , reset(), reset to marked position
+
+	threadloacl  sourcecode
+	volatile
+	linkedhashmap treemap
+	database index
+	quick sort merge sort ...redblack tree b+ tree
+	how to detect memory leak(jmap, jstack)
+	classloader: system class loader, extension class loader, bootstrap class loader	
+	fork/join
+	how to make a class immutable?
+		1 private setter
+		2 private or final fields
+		3 final class
+		4 private constructor and make objects in factory
+		5 private method
+		6 don't privode methods to modify the reference mutuble objects
+		7 don't pass the referece of fileds outside,  should provide copies
+
+	Executors:( executor.execute(Runnable))
+		1 using an existing worker thread( thread pools) to run the runnable task
+		2 place runnable task in a queue and wait for a worker thread
+
+	ExecutorService implements Executors: (es.submit(Runnable or Callable))
+		1 submit method will give the future object which has the result of callable
+		2 has methods to shutdown itself
+
+	ScheduledExecutorService implements ExecutorService
+		1 schedule function
+
+	ThreadPool
+		FixedThreadPool
+		CachedThreadPool, this is an executor with an expandable thread pool, suitable for applications which lanuch many short-lived tasks
+		newSingleThreadPool creates an executor with one thread worker
+		
+
