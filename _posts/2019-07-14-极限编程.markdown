@@ -1,0 +1,17 @@
+---
+layout: post
+title:  "极限编程"
+date:   2019-07-14
+---
+本文将探讨 极限编程 与 极限挑战的关系
+
+{% highlight ruby %}
+先说结论， 其实没有关系
+#=> prints 'Hi, Tom' to STDOUT.
+{% endhighlight %}
+
+Check out the [Jekyll docs][jekyll-docs] for more info on how to get the most out of Jekyll. File all bugs/feature requests at [Jekyll’s GitHub repo][jekyll-gh]. If you have questions, you can ask them on [Jekyll Talk][jekyll-talk].
+
+[jekyll-docs]: https://jekyllrb.com/docs/home
+[jekyll-gh]:   https://github.com/jekyll/jekyll
+[jekyll-talk]: https://talk.jekyllrb.com/
